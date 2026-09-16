@@ -3,10 +3,12 @@ import { Botao } from "./Botao";
 import { Logo } from "./Logo";
 import { IconeFacebook, IconeInstagram, IconeWhatsApp } from "./Icones";
 import { FACEBOOK, HORARIO, INSTAGRAM, LINHAS } from "../data/contactos";
+import { creditosDasFotos } from "../data/fotos";
 import { MENSAGENS, linkTelefone, linkWhatsApp } from "../lib/links";
 
 const LIGACOES = [
   { href: "#menu", texto: "Menu" },
+  { href: "#galeria", texto: "Galeria" },
   { href: "#sobre", texto: "Sobre" },
   { href: "#contactos", texto: "Encomendas" },
   { href: "#localizacao", texto: "Localização" },
@@ -91,6 +93,28 @@ export function Rodape() {
             </li>
           </ul>
         </Coluna>
+      </div>
+
+      <div className="border-t border-creme/[0.06]">
+        <details className="contentor py-5 text-[12px] leading-relaxed text-cinza">
+          <summary className="cursor-pointer underline decoration-creme/25 underline-offset-4 transition-colors hover:text-creme">
+            Créditos das fotografias (Wikimedia Commons)
+          </summary>
+          <ul className="mt-3 grid gap-x-8 gap-y-1.5 md:grid-cols-2">
+            {creditosDasFotos().map(({ titulo, credito }) => (
+              <li key={titulo}>
+                {titulo}: foto de{" "}
+                <a href={credito.fonte} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-creme">
+                  {credito.autor}
+                </a>{" "}
+                (recortada),{" "}
+                <a href={credito.licencaUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-creme">
+                  {credito.licenca}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </details>
       </div>
 
       <div className="border-t border-creme/[0.06]">

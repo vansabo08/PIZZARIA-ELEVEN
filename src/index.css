@@ -8,9 +8,13 @@
   --ambar: #f0a860;
   --creme: #f5efe7;
   --cinza: #8a8178;
+  --whatsapp: #25d366;
+  --whatsapp-escuro: #1ebe5a;
 }
 
 @theme inline {
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-escuro: var(--whatsapp-escuro);
   --color-carvao: var(--carvao);
   --color-carvao-2: var(--carvao-2);
   --color-brasa: var(--brasa);
@@ -24,6 +28,8 @@
   --font-sans: "Manrope Variable", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --ease-brasa: cubic-bezier(0.22, 1, 0.36, 1);
   --animate-descer: descer 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  --animate-deslizar: deslizar 45s linear infinite;
+  --animate-pulsar: pulsar 2.6s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 
   @keyframes descer {
     0% {
@@ -31,6 +37,27 @@
     }
     100% {
       transform: translateY(300%);
+    }
+  }
+
+  @keyframes deslizar {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes pulsar {
+    0% {
+      transform: scale(1);
+      opacity: 0.55;
+    }
+    80%,
+    100% {
+      transform: scale(1.7);
+      opacity: 0;
     }
   }
 }

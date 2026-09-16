@@ -3,21 +3,21 @@ import { IconeWhatsApp } from "./Icones";
 import { EASE_BRASA } from "./Revelar";
 import { MENSAGENS, linkWhatsApp } from "../lib/links";
 
+/** Botão flutuante verde, só com o ícone. O anel que pulsa pára com "reduzir movimento". */
 export function BotaoWhatsApp() {
   return (
     <m.a
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0.6 }}
+      animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.6, ease: EASE_BRASA, delay: 0.8 }}
       href={linkWhatsApp(MENSAGENS.pedido)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Pedir pelo WhatsApp"
-      // A borda carvão mantém o botão visível quando passa por cima da secção laranja.
-      className="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 flex h-14 min-w-14 items-center justify-center gap-2.5 rounded-full border-2 border-carvao bg-brasa text-carvao transition-colors duration-300 hover:bg-ambar sm:right-6 sm:bottom-6 md:px-5"
+      className="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-50 grid size-14 place-items-center rounded-full bg-whatsapp text-white transition-colors duration-300 hover:bg-whatsapp-escuro sm:right-6 sm:bottom-6 sm:size-16"
     >
-      <IconeWhatsApp className="size-6" />
-      <span className="hidden text-[15px] font-bold md:inline">Pedir pelo WhatsApp</span>
+      <span aria-hidden="true" className="absolute inset-0 animate-pulsar rounded-full bg-whatsapp motion-reduce:hidden" />
+      <IconeWhatsApp className="relative size-7 sm:size-8" />
     </m.a>
   );
 }

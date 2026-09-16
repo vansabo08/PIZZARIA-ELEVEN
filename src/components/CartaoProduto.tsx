@@ -8,7 +8,7 @@ export function CartaoProduto({ item, numero }: { item: ItemMenu; numero: number
   const nome = nomeParaPedido(item);
 
   return (
-    <article className="group flex h-full flex-col border border-creme/[0.06] bg-carvao-2 p-5 sm:p-6">
+    <article className="group flex h-full flex-col border border-creme/[0.06] bg-carvao-2 p-5 transition-colors duration-500 hover:border-brasa/40 sm:p-6 xl:p-5">
       <div className="flex flex-1 flex-col items-center text-center">
         <span
           aria-hidden="true"
@@ -20,7 +20,7 @@ export function CartaoProduto({ item, numero }: { item: ItemMenu; numero: number
           {item.categoria}
           {item.tamanho && ` · ${item.tamanho}`}
         </p>
-        <h3 className="mt-2 text-[1.7rem] leading-tight text-creme">{item.nome}</h3>
+        <h3 className="mt-2 text-[1.7rem] leading-tight text-creme xl:text-[1.45rem]">{item.nome}</h3>
         <p className="mt-3 max-w-[32ch] text-[14.5px] leading-relaxed text-cinza">{item.descricao}</p>
         <Ornamento className="mt-auto pt-6 text-brasa/70" />
       </div>

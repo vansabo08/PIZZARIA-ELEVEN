@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { m, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { Botao } from "./Botao";
 import { IconeWhatsApp } from "./Icones";
 import { Revelar } from "./Revelar";
@@ -6,13 +8,28 @@ import { LINHAS } from "../data/contactos";
 import { MENSAGENS, linkTelefone, linkWhatsApp } from "../lib/links";
 
 export function Encomendas() {
+  const seccao = useRef<HTMLElement>(null);
+  const reduzirMovimento = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: seccao, offset: ["start end", "end start"] });
+  // A palavra em contorno atravessa a secção na horizontal enquanto se desce.
+  const x = useTransform(scrollYProgress, [0, 1], ["10%", "-45%"]);
+
   return (
     <section
+      ref={seccao}
       id="contactos"
       aria-labelledby="contactos-titulo"
       data-tom="brasa"
-      className="scroll-mt-12 bg-brasa text-carvao"
+      className="relative isolate scroll-mt-12 overflow-hidden bg-brasa text-carvao"
     >
+      <m.p
+        aria-hidden="true"
+        style={reduzirMovimento ? undefined : { x }}
+        className="pointer-events-none absolute top-1/2 left-0 -z-10 -translate-y-1/2 font-serif text-[40vw] leading-none font-semibold tracking-[-0.04em] whitespace-nowrap text-transparent italic select-none [-webkit-text-stroke:2px_rgba(15,13,11,0.14)] lg:text-[28rem]"
+      >
+        eleven pizzaria
+      </m.p>
+
       <div className="contentor py-24 text-center sm:py-32">
         <TituloSeccao
           id="contactos-titulo"

@@ -3,6 +3,8 @@
 // Para usar fotos da casa, põe o ficheiro em /public/media (de preferência 4:5,
 // em WebP), escreve o caminho em `foto.src` e apaga o `credito`.
 
+import type { Credito } from "./fotos";
+
 export type Ilustracao = "pizza" | "hamburguer" | "batata" | "sumo";
 
 export type ItemMenu = {
@@ -20,8 +22,8 @@ export type ItemMenu = {
     alt: string;
     /** Que parte da foto fica à vista se não estiver em 4:5, como em CSS `object-position`. */
     posicao?: string;
-    /** Obrigatório para fotos com licença Creative Commons (aparece nos créditos por baixo do menu). */
-    credito?: { autor: string; licenca: string; licencaUrl: string; fonte: string };
+    /** Obrigatório para fotos com licença Creative Commons (aparece nos créditos do rodapé). */
+    credito?: Credito;
   };
   ilustracao: Ilustracao;
 };

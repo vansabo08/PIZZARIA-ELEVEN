@@ -1,5 +1,6 @@
 import { Botao } from "./Botao";
 import { IconeSeta } from "./Icones";
+import { ImagemParallax } from "./ImagemParallax";
 import { Revelar } from "./Revelar";
 import { TituloSeccao } from "./TituloSeccao";
 import { MENSAGENS, linkWhatsApp } from "../lib/links";
@@ -13,17 +14,14 @@ export function Sobre() {
         <Revelar className="lg:col-span-6">
           <div className="relative sm:mr-4 sm:mb-4">
             <div aria-hidden="true" className="absolute inset-0 hidden translate-x-4 translate-y-4 border border-ambar/35 sm:block" />
-            <div className="relative aspect-[4/5] overflow-hidden bg-carvao">
-              <img
-                src="/media/sobre-forno.webp"
-                alt="Pizza com mozzarella e manjericão numa pá de madeira, à frente do forno a lenha aceso"
-                loading="lazy"
-                decoding="async"
-                width={960}
-                height={1200}
-                className="size-full object-cover"
-              />
-            </div>
+            <ImagemParallax
+              src="/media/sobre-forno.webp"
+              alt="Pizza com mozzarella e manjericão numa pá de madeira, à frente do forno a lenha aceso"
+              distancia={6}
+              largura={576}
+              altura={720}
+              className="aspect-[4/5] bg-carvao"
+            />
           </div>
         </Revelar>
 
