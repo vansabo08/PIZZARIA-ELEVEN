@@ -1,0 +1,7 @@
+node_modules
+dist
+.vercel
+*.local
+
+# Vídeo original solto na raiz; o site usa a cópia em public/media/hero.mp4
+/*.mp4

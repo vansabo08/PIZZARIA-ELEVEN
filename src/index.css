@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/* Paleta "Forno & Brasa" */
+:root {
+  --carvao: #0f0d0b;
+  --carvao-2: #1a1614;
+  --brasa: #ff6b1a;
+  --ambar: #f0a860;
+  --creme: #f5efe7;
+  --cinza: #8a8178;
+}
+
+@theme inline {
+  --color-carvao: var(--carvao);
+  --color-carvao-2: var(--carvao-2);
+  --color-brasa: var(--brasa);
+  --color-ambar: var(--ambar);
+  --color-creme: var(--creme);
+  --color-cinza: var(--cinza);
+}
+
+@theme {
+  --font-serif: "Fraunces Variable", "Fraunces", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope Variable", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease-brasa: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-descer: descer 2.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+
+  @keyframes descer {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(300%);
+    }
+  }
+}
+
+@utility contentor {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@layer base {
+  html {
+    background: var(--carvao);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--carvao);
+    color: var(--creme);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-optical-sizing: auto;
+  }
+
+  ::selection {
+    background: var(--brasa);
+    color: var(--carvao);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ambar);
+    outline-offset: 4px;
+  }
+
+  [data-tom="brasa"] :focus-visible {
+    outline-color: var(--carvao);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
